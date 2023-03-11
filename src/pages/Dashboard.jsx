@@ -27,7 +27,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (listener.current) {
       listener.current = false;
-      // dispatch(uploadProfiles(pageNumber));
+      dispatch(uploadProfiles(pageNumber));
     }
     setDelay(true);
     const timer = setTimeout(() => {
@@ -45,61 +45,10 @@ const Dashboard = () => {
     const scrollHeight = container.scrollHeight;
     const isAtBottom = scrollTop + clientHeight + 500 >= scrollHeight - 30;
     if (isAtBottom && !isLoading) {
-      // increase();
-      // dispatch(updateProfilesList(pageNumber));
+      increase();
+      dispatch(updateProfilesList(pageNumber));
     }
   };
-
-  const images = [
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1678452562928-1d0c269a913b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
-    },
-  ];
 
   return (
     <Dashboardlayout>
@@ -111,17 +60,10 @@ const Dashboard = () => {
           onScroll={handleScroll}
           className="layout mt-10 mb-24 overflow-auto"
         >
-          {/* {profiles?.map(({ URL, likes, id }, idx) => {
+          {profiles?.map(({ URL, likes, id }, idx) => {
             return (
               <div key={idx} className="flex justify-center max-w-[786px]  ">
                 <ImageCard src={URL} likes={likes} id={id} />
-              </div>
-            );
-          })} */}
-          {images?.map(({ src, likes, id }, idx) => {
-            return (
-              <div key={idx} className="flex justify-center max-w-[786px]  ">
-                <ImageCard src={src} />
               </div>
             );
           })}
