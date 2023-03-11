@@ -10,27 +10,32 @@ import {
   DPIconFilledHeart,
   DPIconHeart,
 } from '../assets/images/icons';
-import { getUserData, likeAPost } from '../redux/DashboardSlice';
+import { getUserData, likeAPost, moneyEarned } from '../redux/DashboardSlice';
 
 const ImageCard = ({ src, likes, id }) => {
   const { userData } = useSelector((state) => state.dashboard);
   const { limit } = userData;
   const dispatch = useDispatch();
   const [forLike, setForLike] = useState(false);
+  // const getLike = () => {
+  //   setForLike((prev) => !prev);
+  //   dispatch(likeAPost(id)).then(() => {
+  //     dispatch(getUserData());
+  //     if (!limit) return;
+  //     toast.error(
+  //       'You have reached your 100 likes daily limit! Come back at (time)'
+  //     );
+  //   });
+  // };
+
   const getLike = () => {
     setForLike((prev) => !prev);
-    dispatch(likeAPost(id)).then(() => {
-      dispatch(getUserData());
-      if (!limit) return;
-      toast.error(
-        'You have reached your 100 likes daily limit! Come back at (time)'
-      );
-    });
+    dispatch(moneyEarned());
   };
 
   return (
-    <div className="w-full rounded-2xl h-[400px] relative">
-      <Link className="flex gap-2 absolute top-4 right-3 p-2 text-white bg-dark-green border-2 border-light-green rounded-3xl">
+    <div className="w-full rounded-2xl h-[400px] relative ">
+      <Link className="flex gap-2 absolute top-4 z-10 right-3 p-2 text-white bg-dark-green border-2 border-light-green rounded-3xl">
         <DPIconAdd />
         <span className="text-light-green">R$</span> 1,00
       </Link>
@@ -52,9 +57,7 @@ const ImageCard = ({ src, likes, id }) => {
       <div className="flex justify-between gap-4 p-4 items-center bg-white absolute bottom-[4.2rem] rounded-b-[2rem] md:px-4 md:py-6 w-full ">
         <span className="flex items-center gap-2">
           <DPIconFilledHeart />
-          <p className="font-semibold text-sm">
-            {forLike ? parseInt(likes) + 1 : likes}
-          </p>
+          <p className="font-semibold text-sm">{forLike ? likes + 1 : likes}</p>
         </span>
 
         <span className="flex items-center gap-2">

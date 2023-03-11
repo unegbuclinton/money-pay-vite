@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import profile from '../assets/images/profile.png';
 
 const Notification = () => {
-  const { userData } = useSelector((state) => state.dashboard);
+  const { userData, moneyValue } = useSelector((state) => state.dashboard);
   const { email, balance } = userData;
   const navigate = useNavigate();
   const checkout = () => {
@@ -20,7 +20,7 @@ const Notification = () => {
           {email}
         </p>
         <p className="font-bold text-sm md:text-2xl">
-          <span className="text-light-green">R$</span> {balance}
+          <span className="text-light-green">R$</span> {moneyValue}
         </p>
       </div>
       <div

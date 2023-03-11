@@ -6,6 +6,7 @@ const initialState = {
   pageNumber: 0,
   userData: {},
   profiles: [],
+  moneyValue: 0,
 };
 
 export const uploadProfiles = createAsyncThunk(
@@ -28,6 +29,9 @@ export const dashboardSlice = createSlice({
     resetDashboardState: () => initialState,
     pageCounter: (state) => {
       state.pageNumber = state.pageNumber + 1;
+    },
+    moneyEarned: (state) => {
+      state.moneyValue = state.moneyValue + 1;
     },
   },
   extraReducers: (builder) => {
@@ -59,6 +63,7 @@ export const dashboardSlice = createSlice({
   },
 });
 
-export const { pageCounter, resetDashboardState } = dashboardSlice.actions;
+export const { pageCounter, resetDashboardState, moneyEarned } =
+  dashboardSlice.actions;
 
 export default dashboardSlice.reducer;
