@@ -49,7 +49,6 @@ const Dashboard = () => {
       dispatch(updateProfilesList(pageNumber));
     }
   };
-
   return (
     <Dashboardlayout>
       {delay ? (
