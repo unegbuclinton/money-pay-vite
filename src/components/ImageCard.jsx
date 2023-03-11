@@ -10,14 +10,17 @@ import {
   DPIconFilledHeart,
   DPIconHeart,
 } from '../assets/images/icons';
-import { getUserData, likeAPost, moneyEarned } from '../redux/DashboardSlice';
+import {
+  forLikes,
+  getUserData,
+  likeAPost,
+  moneyEarned,
+} from '../redux/DashboardSlice';
 
-const ImageCard = ({ src, likes, id }) => {
-  const { userData } = useSelector((state) => state.dashboard);
-  const { limit } = userData;
+const ImageCard = ({ src, likes, like, id }) => {
+  // const { like } = useSelector((state) => state.dashboard);
   const dispatch = useDispatch();
-  const [forLike, setForLike] = useState(false);
-  // const getLike = () => {
+  const [forLike, setForLike] = useState(false); // const getLike = () => {
   //   setForLike((prev) => !prev);
   //   dispatch(likeAPost(id)).then(() => {
   //     dispatch(getUserData());
@@ -29,8 +32,8 @@ const ImageCard = ({ src, likes, id }) => {
   // };
 
   const getLike = () => {
-    setForLike((prev) => !prev);
-    dispatch(moneyEarned());
+    dispatch(forLikes(id));
+    // dispatch(moneyEarned());
   };
 
   return (
@@ -52,12 +55,12 @@ const ImageCard = ({ src, likes, id }) => {
         onClick={getLike}
         className="absolute rounded-full p-4 md:p-5 bg-white shadow-2xl bottom-[95px] left-[50%] translate-x-[-50%]  translate-y-[0] z-10"
       >
-        {forLike ? <DPIconFilledHeart /> : <DPIconHeart />}
+        {like ? <DPIconFilledHeart /> : <DPIconHeart />}
       </div>
       <div className="flex justify-between gap-4 p-4 items-center bg-white absolute bottom-[4.2rem] rounded-b-[2rem] md:px-4 md:py-6 w-full ">
         <span className="flex items-center gap-2">
           <DPIconFilledHeart />
-          <p className="font-semibold text-sm">{forLike ? likes + 1 : likes}</p>
+          <p className="font-semibold text-sm">{likes}</p>
         </span>
 
         <span className="flex items-center gap-2">
