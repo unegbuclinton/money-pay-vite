@@ -1,23 +1,28 @@
-import { useFormik } from 'formik';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import ErrorMessage from '../components/ErrorMessage';
-import InputField from '../components/Input';
-import Loading from '../components/loader/Loading';
-import { resetState, userLogin } from '../redux/authSlice';
-import { getUserData, resetDashboardState } from '../redux/DashboardSlice';
-import { loginSchema } from '../validation/Schema';
-import './pages.css';
+import { useFormik } from "formik";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../components/ErrorMessage";
+import InputField from "../components/Input";
+import Loading from "../components/loader/Loading";
+import { resetState, userLogin } from "../redux/authSlice";
+import {
+  getUserData,
+  resetDashboardState,
+  uploadProfiles,
+} from "../redux/DashboardSlice";
+import { loginSchema } from "../validation/Schema";
+import "./pages.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const { isLoading } = useSelector((state) => state.auth);
+  const { pageNumber } = useSelector((state) => state.dashboard);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
@@ -26,9 +31,10 @@ const Login = () => {
         password: formik.values.password,
       };
       dispatch(userLogin(body)).then((data) => {
-        if (data.payload === 'undefined' || !data.payload) return;
+        if (data.payload === "undefined" || !data.payload) return;
+        dispatch(uploadProfiles(pageNumber));
         dispatch(getUserData());
-        navigate('/dashboard');
+        navigate("/dashboard");
       });
     },
   });
@@ -78,16 +84,16 @@ const Login = () => {
               type="submit"
               className="h-12 w-1/2 bg-[#171C33] rounded-lg text-[#fff]  font-medium text-lg mt-10 flex justify-center items-center"
             >
-              {isLoading ? <Loading /> : 'Login'}
+              {isLoading ? <Loading /> : "Login"}
             </button>
           </div>
           <p className="text-center mt-5 font-semibold">
             Don't have an account ?
             <span
               className="cursor-pointer text-blue-sapphire-hover "
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate("/signup")}
             >
-              {' '}
+              {" "}
               Sign up
             </span>
           </p>
