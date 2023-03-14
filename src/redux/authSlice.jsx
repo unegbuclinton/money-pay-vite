@@ -1,16 +1,17 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { loginUser, registerUser } from '../api/auth';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { loginUser, registerUser } from "../api/auth";
 // import { persistor } from '../store';
-export const userLogin = createAsyncThunk('auth/userLogin', loginUser);
-export const userRegister = createAsyncThunk('auth/userRegister', registerUser);
+export const userLogin = createAsyncThunk("auth/userLogin", loginUser);
+export const userRegister = createAsyncThunk("auth/userRegister", registerUser);
 
 const initialState = {
   token: null,
   isLoading: false,
+  user: {},
 };
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     resetState: () => initialState,

@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getProfiles, likePost, userData } from '../api/dashboard';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getProfiles, likePost, userData } from "../api/dashboard";
 
 const initialState = {
   isLoading: false,
@@ -9,20 +9,20 @@ const initialState = {
 };
 
 export const uploadProfiles = createAsyncThunk(
-  'dashboard/uploadProfiles',
+  "dashboard/uploadProfiles",
   getProfiles
 );
 export const updateProfilesList = createAsyncThunk(
-  'dashboard/uploadProfilesList',
+  "dashboard/uploadProfilesList",
   getProfiles
 );
 
-export const likeAPost = createAsyncThunk('dashboard/likeAPost', likePost);
+export const likeAPost = createAsyncThunk("dashboard/likeAPost", likePost);
 
-export const getUserData = createAsyncThunk('dashboard/getUserData', userData);
+export const getUserData = createAsyncThunk("dashboard/getUserData", userData);
 
 export const dashboardSlice = createSlice({
-  name: 'dashboard',
+  name: "dashboard",
   initialState,
   reducers: {
     resetDashboardState: () => initialState,
@@ -52,6 +52,7 @@ export const dashboardSlice = createSlice({
       state.isLoading = false;
       state.userData = {
         email: action.payload.email,
+        name: action.payload.name,
         balance: action.payload.earnedMoney,
         limit: action.payload.limitReached,
       };

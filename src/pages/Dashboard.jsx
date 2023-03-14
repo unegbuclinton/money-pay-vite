@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import SyncLoader from 'react-spinners/SyncLoader';
-import Dashboardlayout from '../components/Dashboardlayout';
-import ImageCard from '../components/ImageCard';
-import Loading from '../components/loader/Loading';
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import SyncLoader from "react-spinners/SyncLoader";
+import Dashboardlayout from "../components/Dashboardlayout";
+import ImageCard from "../components/ImageCard";
+import Loading from "../components/loader/Loading";
 
 import {
   pageCounter,
   updateProfilesList,
   uploadProfiles,
-} from '../redux/DashboardSlice';
-import './pages.css';
+} from "../redux/DashboardSlice";
+import "./pages.css";
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
   const listener = useRef(true);
@@ -28,8 +28,7 @@ const Dashboard = () => {
       listener.current = false;
       dispatch(uploadProfiles(pageNumber));
     }
-    const timer = setTimeout(() => {
-    }, 1000);
+    const timer = setTimeout(() => {}, 1000);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -47,14 +46,17 @@ const Dashboard = () => {
     }
   };
   return (
-    <Dashboardlayout>
+    <Dashboardlayout notify={true}>
       {isLoading ? (
-        <SyncLoader color="#fff" loading={true} size={10} />
+        <div className="flex flex-col justify-center h-screen">
+          {" "}
+          <SyncLoader color="#fff" loading={true} size={10} />
+        </div>
       ) : (
         <div
           ref={divRef}
           onScroll={handleScroll}
-          className="layout mt-10 mb-24 overflow-auto"
+          className="layout mt-10 mb-24 overflow-auto pt-20"
         >
           {profiles?.map(({ URL, likes, id }, idx) => {
             return (

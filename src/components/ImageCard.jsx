@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   DPIconAdd,
   DPIconComments,
   DPIconFilledHeart,
   DPIconHeart,
-} from '../assets/images/icons';
-import { getUserData, likeAPost } from '../redux/DashboardSlice';
+} from "../assets/images/icons";
+import { getUserData, likeAPost } from "../redux/DashboardSlice";
 
 const ImageCard = ({ src, likes, id }) => {
   const { userData } = useSelector((state) => state.dashboard);
@@ -23,7 +23,7 @@ const ImageCard = ({ src, likes, id }) => {
       dispatch(getUserData());
       if (!limit) return;
       toast.error(
-        'You have reached your 100 likes daily limit! Come back at (time)'
+        "You have reached your 100 likes daily limit! Come back at (time)"
       );
     });
   };
@@ -35,7 +35,6 @@ const ImageCard = ({ src, likes, id }) => {
         <span className="text-light-green">R$</span> 1,00
       </Link>
       <img
-        crossOrigin="anonymous"
         src={src}
         effect="blur"
         alt=""
