@@ -1,19 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import SyncLoader from 'react-spinners/SyncLoader';
-import Dashboardlayout from '../components/Dashboardlayout';
-import ImageCard from '../components/ImageCard';
-import Loading from '../components/loader/Loading';
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import SyncLoader from "react-spinners/SyncLoader";
+import Dashboardlayout from "../components/Dashboardlayout";
+import ImageCard from "../components/ImageCard";
+import Loading from "../components/loader/Loading";
 
 import {
   pageCounter,
   updateProfilesList,
   uploadProfiles,
-} from '../redux/DashboardSlice';
-import './pages.css';
+} from "../redux/DashboardSlice";
+import "./pages.css";
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
   const listener = useRef(true);
+  const [delay, setDelay] = useState(true);
   const { isLoading, pageNumber, profiles } = useSelector(
     (state) => state.dashboard
   );
@@ -29,7 +30,8 @@ const Dashboard = () => {
       dispatch(uploadProfiles(pageNumber));
     }
     const timer = setTimeout(() => {
-    }, 1000);
+      setDelay(false);
+    }, 2000);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -48,7 +50,7 @@ const Dashboard = () => {
   };
   return (
     <Dashboardlayout>
-      {isLoading ? (
+      {delay ? (
         <SyncLoader color="#fff" loading={true} size={10} />
       ) : (
         <div
