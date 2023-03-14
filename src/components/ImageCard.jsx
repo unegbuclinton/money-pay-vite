@@ -34,7 +34,7 @@ const ImageCard = ({ src, likes, id }) => {
         <DPIconAdd />
         <span className="text-light-green">R$</span> 1,00
       </Link>
-      <LazyLoadImage
+      <img
         crossOrigin="anonymous"
         src={src}
         effect="blur"
