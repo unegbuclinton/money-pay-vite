@@ -35,7 +35,6 @@ const ImageCard = ({ src, likes, id }) => {
         <span className="text-light-green">R$</span> 1,00
       </Link>
       <img
-        crossOrigin="anonymous"
         src={src}
         effect="blur"
         alt=""
