@@ -14,7 +14,6 @@ import './pages.css';
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
   const listener = useRef(true);
-  const [delay, setDelay] = useState(false);
   const { isLoading, pageNumber, profiles } = useSelector(
     (state) => state.dashboard
   );
@@ -29,10 +28,8 @@ const Dashboard = () => {
       listener.current = false;
       dispatch(uploadProfiles(pageNumber));
     }
-    setDelay(true);
     const timer = setTimeout(() => {
-      setDelay(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -51,7 +48,7 @@ const Dashboard = () => {
   };
   return (
     <Dashboardlayout>
-      {delay ? (
+      {isLoading ? (
         <SyncLoader color="#fff" loading={true} size={10} />
       ) : (
         <div
