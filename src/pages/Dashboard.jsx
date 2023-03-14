@@ -5,11 +5,7 @@ import Dashboardlayout from "../components/Dashboardlayout";
 import ImageCard from "../components/ImageCard";
 import Loading from "../components/loader/Loading";
 
-import {
-  pageCounter,
-  updateProfilesList,
-  uploadProfiles,
-} from "../redux/DashboardSlice";
+import { pageCounter, updateProfilesList } from "../redux/DashboardSlice";
 import "./pages.css";
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
@@ -25,10 +21,9 @@ const Dashboard = () => {
     setIsFetching(false);
   };
   useEffect(() => {
-    if (listener.current) {
-      listener.current = false;
-      dispatch(uploadProfiles(pageNumber));
-    }
+    // if (listener.current) {
+    //   listener.current = false;
+    // }
     const timer = setTimeout(() => {
       setDelay(false);
     }, 2000);

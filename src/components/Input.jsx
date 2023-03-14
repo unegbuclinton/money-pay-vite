@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import hideImg from '../assets/images/hide.png';
-import showImg from '../assets/images/show.png';
+import React, { useState } from "react";
+import hideImg from "../assets/images/hide.png";
+import showImg from "../assets/images/show.png";
 const InputField = ({
   placeholder,
   name,
@@ -24,7 +24,7 @@ const InputField = ({
         </div>
         <input
           className={`text-base mb-2 lg:mb-1 rounded bg-transparent border-[#595959] transition focus:border-[#171C33] focus:shadow-xxl shadow-xl h-12 outline-none w-full ${
-            plain ? 'p-4' : 'pl-14'
+            plain ? "p-4" : "pl-14"
           } text-[#171C33]`}
           placeholder={placeholder}
           name={name}
@@ -32,17 +32,17 @@ const InputField = ({
           id={id}
           onChange={onChange}
           onBlur={onBlur}
-          type={type === 'password' ? (show ? 'text' : 'password') : type}
+          type={type === "password" ? (show ? "text" : "password") : type}
         />
-        {type === 'password' && (
+        {type === "password" && (
           <div
             className="absolute cursor-pointer top-3 right-5"
             onClick={toggleShowPassword}
           >
             {show ? (
-              <img src={hideImg} alt="hide-icon" className="w-4/5" />
-            ) : (
               <img src={showImg} alt="show-icon" className="w-4/5" />
+            ) : (
+              <img src={hideImg} alt="hide-icon" className="w-4/5" />
             )}
           </div>
         )}
