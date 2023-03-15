@@ -7,7 +7,6 @@ export const userRegister = createAsyncThunk("auth/userRegister", registerUser);
 const initialState = {
   token: null,
   isLoading: false,
-  user: {},
 };
 
 export const authSlice = createSlice({
