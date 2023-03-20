@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -14,7 +13,8 @@ import { getUserData, likeAPost } from "../redux/DashboardSlice";
 
 const ImageCard = ({ src, likes, id }) => {
   const { userData } = useSelector((state) => state.dashboard);
-  const { limit } = userData;
+  const { limit, nextTime } = userData;
+  const formatDate = dayjs(nextTime).format("ddd DD/MM hh:mm");
   const dispatch = useDispatch();
   const [forLike, setForLike] = useState(false);
   const getLike = () => {
@@ -23,7 +23,7 @@ const ImageCard = ({ src, likes, id }) => {
       dispatch(getUserData());
       if (!limit) return;
       toast.error(
-        "You have reached your 100 likes daily limit! Come back at (time)"
+        `You have reached your 100 likes daily limit! Come back at ${formatDate}`
       );
     });
   };

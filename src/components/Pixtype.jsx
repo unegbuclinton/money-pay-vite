@@ -32,11 +32,11 @@ const Pixtype = () => {
             key={index}
             onClick={() => setActiveBtn(index)}
             className={`flex flex-col justify-center  items-center ${
-              activeBtn === index ? "bg-light-green text-white" : ""
+              activeBtn === index ? "bg-light-green text-black" : ""
             } rounded-full w-16 h-16 border-2 border-grey`}
           >
             <img src={image} alt="" className="w-[25px]" />
-            <p className="text-[0.65rem]">{text}</p>
+            <p className="text-[0.56rem]">{text}</p>
           </div>
         );
       })}

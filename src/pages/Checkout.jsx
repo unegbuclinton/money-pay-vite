@@ -19,9 +19,14 @@ const Checkout = () => {
     setCheckoutValue(bal);
   }, []);
 
-  const handleChange = (e) => {
-    setCheckoutValue(e.target.value);
+  const handleChange = (event) => {
+    const inputValue = event.target.value;
+
+    if (/^[0-9]*$/.test(inputValue)) {
+      setCheckoutValue(inputValue);
+    }
   };
+  console.log(bal);
   return (
     <Dashboardlayout>
       <div className="bg-white py-3 px-4 mt-5 rounded-2xl">
@@ -53,9 +58,9 @@ const Checkout = () => {
           <span className="text-light-green absolute left-2 top-[0.25rem]">
             $R
           </span>
+
           <input
-            type="number"
-            min="0"
+            type="text"
             name="balance"
             id="balance"
             value={checkoutValue}
@@ -66,9 +71,15 @@ const Checkout = () => {
         <div className="flex justify-center">
           <button
             onClick={() => toast.success(`Widthdrawing ${checkoutValue} now`)}
-            disabled={checkoutValue.length === 0 || checkoutValue !== bal}
+            disabled={
+              checkoutValue.length === 0 ||
+              checkoutValue !== bal ||
+              checkoutValue === "0"
+            }
             className={`py-2 px-7 ${
-              checkoutValue.length === 0 || checkoutValue > bal
+              checkoutValue.length === 0 ||
+              checkoutValue > bal ||
+              checkoutValue === "0"
                 ? "bg-grey"
                 : "bg-light-green"
             } mt-2 text-black font-bold rounded`}

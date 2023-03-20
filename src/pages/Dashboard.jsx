@@ -58,7 +58,7 @@ const Dashboard = () => {
           onScroll={handleScroll}
           className="layout mt-10 mb-24 overflow-auto pt-20"
         >
-          {profiles?.map(({ URL, likes, id }, idx) => {
+          {profiles?.map(({ URL, likes, profileImage, id }, idx) => {
             return (
               <div key={idx} className="flex justify-center max-w-[786px]  ">
                 <ImageCard src={URL} likes={likes} id={id} />
