@@ -14,7 +14,6 @@ import "./pages.css";
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
   const listener = useRef(true);
-  const [delay, setDelay] = useState(true);
   const { isLoading, pageNumber, profiles } = useSelector(
     (state) => state.dashboard
   );
