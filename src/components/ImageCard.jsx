@@ -29,6 +29,7 @@ const ImageCard = ({ src, likes, id }) => {
     });
   };
 
+  const comments = Math.floor(Math.random() * (3500 - 1000)) + 1000;
   return (
     <div className="w-full rounded-2xl h-[400px] relative">
       <Link className="flex gap-2 absolute top-4 right-3 p-2 text-white bg-dark-green border-2 border-light-green rounded-3xl">
@@ -59,7 +60,7 @@ const ImageCard = ({ src, likes, id }) => {
 
         <span className="flex items-center gap-2">
           <DPIconComments />
-          <p className="font-semibold text-sm">3,450</p>
+          <p className="font-semibold text-sm">{comments.toLocaleString()}</p>
         </span>
       </div>
     </div>
