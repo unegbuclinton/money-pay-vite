@@ -1,27 +1,27 @@
-import { useFormik } from 'formik';
-import React from 'react';
-import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import ErrorMessage from '../components/ErrorMessage';
-import InputField from '../components/Input';
-import Loading from '../components/loader/Loading';
-import { userRegister } from '../redux/authSlice';
-import { registrationSchema } from '../validation/Schema';
-import './pages.css';
+import { useFormik } from "formik";
+import React from "react";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../components/ErrorMessage";
+import InputField from "../components/Input";
+import Loading from "../components/loader/Loading";
+import { userRegister } from "../redux/authSlice";
+import { registrationSchema } from "../validation/Schema";
+import "./pages.css";
 const Registration = () => {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.auth);
   const formik = useFormik({
     initialValues: {
-      email: '',
-      name: '',
-      cdf: '',
-      dob: '',
-      gender: '',
-      password: '',
-      confirmPassword: '',
-      whatsapp: '',
+      email: "",
+      name: "",
+      cdf: "",
+      dob: "",
+      gender: "",
+      password: "",
+      confirmPassword: "",
+      whatsapp: "",
     },
     validationSchema: registrationSchema,
     onSubmit: () => {
@@ -35,8 +35,8 @@ const Registration = () => {
 
       dispatch(userRegister(body)).then((data) => {
         if (data.payload) {
-          toast.success('Signup Complete');
-          navigate('/dashboard');
+          toast.success("Signup Complete");
+          navigate("/dashboard");
         }
       });
     },
@@ -143,7 +143,7 @@ const Registration = () => {
             <option className="cursor-pointer" value="Female">
               Female
             </option>
-            <option className="cursor-pointer" value="Prefer not to say">
+            <option className="cursor-pointer" value="Prefer not to Say">
               Prefer not to say
             </option>
           </select>
@@ -181,16 +181,16 @@ const Registration = () => {
               type="submit"
               className=" px-20 py-3 bg-[#171C33] rounded-lg text-[#fff] font-medium text-lg mt-10"
             >
-              {isLoading ? <Loading /> : 'Signup'}
+              {isLoading ? <Loading /> : "Signup"}
             </button>
           </div>
           <p className="text-center mt-5 font-semibold">
             Already have an account ?
             <span
               className="cursor-pointer text-blue-sapphire-hover "
-              onClick={() => navigate('/login')}
+              onClick={() => navigate("/login")}
             >
-              {' '}
+              {" "}
               Login
             </span>
           </p>

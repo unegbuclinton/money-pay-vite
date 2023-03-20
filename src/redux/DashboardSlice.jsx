@@ -55,6 +55,7 @@ export const dashboardSlice = createSlice({
         name: action.payload.name,
         balance: action.payload.earnedMoney,
         limit: action.payload.limitReached,
+        nextTime: action.payload.nextLikeTime,
       };
     });
   },

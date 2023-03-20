@@ -14,6 +14,7 @@ import "./pages.css";
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
   const listener = useRef(true);
+  const [delay, setDelay] = useState(true);
   const { isLoading, pageNumber, profiles } = useSelector(
     (state) => state.dashboard
   );
@@ -46,12 +47,18 @@ const Dashboard = () => {
     }
   };
   return (
+<<<<<<< HEAD
     <Dashboardlayout notify={true}>
       {isLoading ? (
         <div className="flex flex-col justify-center h-screen">
           {" "}
           <SyncLoader color="#fff" loading={true} size={10} />
         </div>
+=======
+    <Dashboardlayout>
+      {delay ? (
+        <SyncLoader color="#fff" loading={true} size={10} />
+>>>>>>> 450f7397910a25d4ec8764905f3e5f20fd1979a4
       ) : (
         <div
           ref={divRef}

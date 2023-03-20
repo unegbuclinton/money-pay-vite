@@ -17,6 +17,7 @@ const ImageCard = ({ src, likes, id }) => {
   const formatDate = dayjs(nextTime).format("ddd DD/MM hh:mm");
   const dispatch = useDispatch();
   const [forLike, setForLike] = useState(false);
+
   const getLike = () => {
     setForLike((prev) => !prev);
     dispatch(likeAPost(id)).then(() => {
