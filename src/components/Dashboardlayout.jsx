@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import DashboardFooter from './DashboardFooter';
-import Notification from './Notification';
+import React, { useEffect } from "react";
+import DashboardFooter from "./DashboardFooter";
+import Notification from "./Notification";
 
-const Dashboardlayout = ({ children }) => {
+const Dashboardlayout = ({ children, notify }) => {
   return (
-    <div className="relative px-6 overflow-hidden flex flex-col items-center justify-center pt-20 bg-hero-pattern h-screen ">
-      <Notification />
+    <div className="relative px-6 overflow-hidden flex flex-col items-center bg-hero-pattern h-screen ">
+      {notify && <Notification />}
       {children}
       <DashboardFooter />
     </div>

@@ -52,6 +52,7 @@ export const dashboardSlice = createSlice({
       state.isLoading = false;
       state.userData = {
         email: action.payload.email,
+        name: action.payload.name,
         balance: action.payload.earnedMoney,
         limit: action.payload.limitReached,
         nextTime: action.payload.nextLikeTime,

@@ -1,8 +1,6 @@
-import dayjs from "dayjs";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
-import "react-lazy-load-image-component/src/effects/blur.css";
+import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
